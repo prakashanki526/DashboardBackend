@@ -1,6 +1,5 @@
 const { Router } = require("express");
 const router = Router();
-const User = require('../models/User.js');
 const jwt = require("jsonwebtoken");
 const {Auth, localVariables} = require("../middleware/auth.js");
 const {register, login, getUser, generateOTP, verifyOTP, verifyUser, checkUserExist, postData, getData} = require('../controllers/appController.js');
