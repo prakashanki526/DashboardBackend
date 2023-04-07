@@ -1,7 +1,7 @@
 const express = require("express");
 const connection = require("./config/db");
 const cors = require("cors");
-// const discover = require("./routes/discover");
+const discover = require("./routes/discover");
 
 
 const app = express();
@@ -16,7 +16,7 @@ app.get("/health",(req,res) => {
     res.send(`Up and running at ${new Date()}`);
 });
 
-// app.use("/discover",discover);
+app.use("/discover",discover);
 
 app.use((req,res,next) => {
     res.status(404).send("Page not found!!");
