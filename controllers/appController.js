@@ -1,9 +1,7 @@
 const User  = require('../models/user.js');
 const Data = require('../models/data');
 const jwt = require('jsonwebtoken');
-// const optGenerator = require('otp-generator');
 const otpGenerator = require('otp-generator');
-// const Chat = require('../models/Chat');
 
 async function register(req,res){
     try {
@@ -210,11 +208,9 @@ async function postData(req,res){
 async function getData(req,res){
     try {
         const filterType = req.query.filterType;
-        const dataList = await Data.find({});
+        const dataList = filterType == "all" ? await Data.find({}) : await Data.find({type: filterType});
         if(dataList){
-            if(!filterType){
-                return res.status(201).send(dataList);
-            }
+            return res.status(201).send(dataList);
         }
         return res.status(501).send({error: 'Data do not exist.'});
     } catch (error) {
