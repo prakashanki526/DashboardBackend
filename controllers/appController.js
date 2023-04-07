@@ -1,4 +1,4 @@
-const User  = require('../models/User.js');
+const User  = require('../models/user.js');
 const Data = require('../models/data');
 const jwt = require('jsonwebtoken');
 // const optGenerator = require('otp-generator');
